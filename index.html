@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ГО «Моя Незалежна Країна»</title>
+<meta name="description" content="Громадська організація «Моя Незалежна Країна» — підтримка дітей, молоді, військових, людей у складних життєвих обставинах та внутрішньо переміщених осіб.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A3A;
+    --wheat:#D9A62E;
+    --sky:#EAF3F7;
+    --teal:#2C5F6F;
+    --charcoal:#2B2B2B;
+    --paper:#FBFAF7;
+    --line:#D7DEE2;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--charcoal);
+    background:var(--paper);
+    line-height:1.6;
+  }
+  h1,h2,h3,.display{
+    font-family:'PT Serif', serif;
+    color:var(--ink);
+    margin:0 0 .4em 0;
+    line-height:1.2;
+  }
+  a{color:var(--teal);}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* HEADER */
+  header{
+    background:var(--ink);
+    color:#fff;
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .header-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:'PT Serif',serif;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#fff;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--wheat);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);font-weight:700;font-size:1.1rem;
+    flex-shrink:0;
+  }
+  nav{display:flex;flex-wrap:wrap;gap:4px;}
+  nav button{
+    background:none;border:none;color:#cfd9e0;
+    font-family:'Inter',sans-serif;font-size:.92rem;font-weight:500;
+    padding:10px 12px;cursor:pointer;border-radius:6px;
+    transition:background .15s, color .15s;
+    white-space:nowrap;
+  }
+  nav button:hover{background:rgba(255,255,255,.08);color:#fff;}
+  nav button.active{background:var(--wheat);color:var(--ink);}
+  .nav-toggle{
+    display:none;background:none;border:1px solid rgba(255,255,255,.3);
+    color:#fff;padding:8px 12px;border-radius:6px;font-size:1rem;cursor:pointer;
+  }
+
+  @media (max-width:900px){
+    .header-inner{flex-wrap:wrap;}
+    nav{display:none;width:100%;flex-direction:column;padding-top:8px;}
+    nav.open{display:flex;}
+    .nav-toggle{display:block;}
+    nav button{text-align:left;}
+  }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg,var(--sky) 0%, var(--paper) 100%);
+    padding:64px 0 48px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero h1{font-size:2.3rem;max-width:680px;}
+  .hero p.lede{font-size:1.15rem;max-width:620px;color:#3a4a55;}
+  .stat-row{
+    display:flex;gap:36px;flex-wrap:wrap;margin-top:36px;
+    border-top:1px solid var(--line);padding-top:28px;
+  }
+  .stat b{
+    display:block;font-family:'PT Serif',serif;font-size:2rem;color:var(--teal);
+  }
+  .stat span{font-size:.9rem;color:#5a6b74;}
+
+  /* SECTIONS */
+  section.panel{display:none;padding:56px 0;}
+  section.panel.active{display:block;}
+  section.panel:nth-of-type(even){background:var(--sky);}
+
+  .section-head{max-width:700px;margin-bottom:32px;}
+  .section-head h2{font-size:1.8rem;}
+  .section-head .tag{
+    display:inline-block;font-size:.82rem;color:var(--teal);
+    font-weight:600;margin-bottom:10px;
+  }
+
+  .card-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;margin-top:28px;
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:4px;
+    padding:22px;
+  }
+  .card h3{font-size:1.05rem;margin-bottom:8px;}
+  .card p{font-size:.95rem;color:#4a5860;margin:0;}
+
+  .photo-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;
+  }
+  .photo-placeholder{
+    aspect-ratio:4/3;border-radius:4px;
+    background:repeating-linear-gradient(45deg, #e3ebee, #e3ebee 10px, #dbe5e9 10px, #dbe5e9 20px);
+    display:flex;align-items:center;justify-content:center;
+    color:#8fa2ab;font-size:.82rem;text-align:center;padding:10px;
+    border:1px dashed #b9c8ce;
+  }
+
+  .updates{margin-top:40px;}
+  .updates h3.label{font-size:1rem;text-transform:none;color:var(--ink);border-bottom:2px solid var(--wheat);display:inline-block;padding-bottom:4px;margin-bottom:20px;}
+  .update-item{
+    display:grid;grid-template-columns:96px 1fr;gap:18px;
+    padding:16px 0;border-bottom:1px solid var(--line);
+  }
+  .update-item:last-child{border-bottom:none;}
+  .update-date{
+    font-size:.82rem;color:var(--teal);font-weight:600;padding-top:2px;
+  }
+  .update-item h4{margin:0 0 4px;font-size:1rem;font-family:'Inter';font-weight:600;color:var(--ink);}
+  .update-item p{margin:0;font-size:.92rem;color:#4a5860;}
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:20px;
+  }
+  .contact-block h3{font-size:1rem;color:var(--teal);margin-bottom:6px;}
+  .contact-block p{margin:0 0 22px;font-size:1rem;}
+  @media (max-width:700px){.contact-grid{grid-template-columns:1fr;}}
+
+  footer{
+    background:var(--ink);color:#a9bac2;padding:28px 0;font-size:.85rem;
+    text-align:center;
+  }
+  footer a{color:#e3ebee;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#" onclick="showTab('home');return false;">
+      <span class="brand-mark">МК</span>
+      ГО «Моя Незалежна Країна»
+    </a>
+    <button class="nav-toggle" onclick="document.getElementById('mainnav').classList.toggle('open')">☰ Меню</button>
+    <nav id="mainnav">
+      <button data-tab="home" class="active">Головна</button>
+      <button data-tab="children">Діти та жінки</button>
+      <button data-tab="youth">Молодь</button>
+      <button data-tab="military">Військовим</button>
+      <button data-tab="rehab">Реабілітація</button>
+      <button data-tab="food">Харчування</button>
+      <button data-tab="idp">Допомога ВПО</button>
+      <button data-tab="contact">Контакти</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<section class="panel active" id="home">
+  <div class="wrap">
+    <div class="hero">
+      <h1>Підтримка людей, коли вона потрібна найбільше</h1>
+      <p class="lede">ГО «Моя Незалежна Країна» — громадська організація, що працює з дітьми, молоддю, жінками, військовими, людьми, які проходять реабілітацію, та внутрішньо переміщеними особами. Ми будуємо мережу підтримки там, де вона потрібна щодня.</p>
+      <div class="stat-row">
+        <div class="stat"><b>6</b><span>напрямків роботи</span></div>
+        <div class="stat"><b>7</b><span>років діяльності*</span></div>
+        <div class="stat"><b>1000+</b><span>людей отримали підтримку*</span></div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:56px;">
+      <span class="tag">Наші напрямки</span>
+      <h2>Чим ми займаємось</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card"><h3>Діти та жінки</h3><p>Дитячий денний центр, дитячі табори та жіночий клуб Strong Women.</p></div>
+      <div class="card"><h3>Молодь</h3><p>Молодіжний клуб Strong Young для розвитку та підтримки підлітків.</p></div>
+      <div class="card"><h3>Військовим</h3><p>Допомога військовослужбовцям та частинам.</p></div>
+      <div class="card"><h3>Реабілітація</h3><p>Реабілітація та ресоціалізація людей із залежностями.</p></div>
+      <div class="card"><h3>Харчування</h3><p>Соціальна їдальня та продуктові набори для тих, хто потребує.</p></div>
+      <div class="card"><h3>Допомога ВПО</h3><p>Підтримка внутрішньо переміщених осіб.</p></div>
+    </div>
+
+    <div class="updates">
+      <h3 class="label">Останні новини</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок новини — замінити на реальний</h4><p>Короткий опис події чи допомоги, яку організація нещодавно надала. Додайте фото та деталі.</p></div>
+      </div>
+      <div class="update-item">
+        <div class="update-date">СЕРПЕНЬ 2026</div>
+        <div><h4>Заголовок новини — замінити на реальний</h4><p>Короткий опис події чи допомоги, яку організація нещодавно надала.</p></div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#8fa2ab;margin-top:24px;">*Цифри — заповнювачі. Замініть на реальні дані організації.</p>
+  </div>
+</section>
+
+<!-- CHILDREN & WOMEN -->
+<section class="panel" id="children">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Напрямок 1</span>
+      <h2>Діти, дитячий денний центр, дитячі табори, жіночий клуб Strong Women</h2>
+      <p>Опишіть тут детальніше: як працює денний центр, які активності проходять у таборах, для кого призначений жіночий клуб Strong Women і які результати він дає.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-placeholder">Фото дитячого центру</div>
+      <div class="photo-placeholder">Фото з табору</div>
+      <div class="photo-placeholder">Фото клубу Strong Women</div>
+    </div>
+    <div class="updates">
+      <h3 class="label">Останні оновлення</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок — замінити</h4><p>Опис останньої активності дитячого центру, табору або жіночого клубу.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTH -->
+<section class="panel" id="youth">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Напрямок 2</span>
+      <h2>Молодіжний клуб Strong Young</h2>
+      <p>Опишіть тут програму клубу: які заняття, зустрічі чи проєкти проходять, вікова група учасників, мета клубу.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-placeholder">Фото зустрічі клубу</div>
+      <div class="photo-placeholder">Фото активності</div>
+      <div class="photo-placeholder">Фото учасників</div>
+    </div>
+    <div class="updates">
+      <h3 class="label">Останні оновлення</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок — замінити</h4><p>Опис останньої зустрічі або заходу молодіжного клубу.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILITARY -->
+<section class="panel" id="military">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Напрямок 3</span>
+      <h2>Допомога військовослужбовцям та частинам</h2>
+      <p>Опишіть тут, яку саме допомогу отримують військові та частини: спорядження, транспорт, гуманітарна підтримка тощо.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-placeholder">Фото передачі допомоги</div>
+      <div class="photo-placeholder">Фото зібраного вантажу</div>
+      <div class="photo-placeholder">Фото волонтерів</div>
+    </div>
+    <div class="updates">
+      <h3 class="label">Останні оновлення</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок — замінити</h4><p>Опис останньої передачі допомоги військовим чи частині.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REHAB -->
+<section class="panel" id="rehab">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Напрямок 4</span>
+      <h2>Реабілітація та ресоціалізація залежних</h2>
+      <p>Опишіть тут програму підтримки людей із залежностями (наркотики, алкоголь, ігроманія): формат роботи, тривалість, як звернутися за допомогою.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-placeholder">Фото групового заняття</div>
+      <div class="photo-placeholder">Фото центру</div>
+      <div class="photo-placeholder">Фото команди</div>
+    </div>
+    <div class="updates">
+      <h3 class="label">Останні оновлення</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок — замінити</h4><p>Опис останньої активності програми реабілітації.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD -->
+<section class="panel" id="food">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Напрямок 5</span>
+      <h2>Годування нужденних — соціальна їдальня та продуктові набори</h2>
+      <p>Опишіть тут графік роботи соціальної їдальні, як часто видаються продуктові набори і хто може звернутися за допомогою.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-placeholder">Фото їдальні</div>
+      <div class="photo-placeholder">Фото продуктових наборів</div>
+      <div class="photo-placeholder">Фото видачі допомоги</div>
+    </div>
+    <div class="updates">
+      <h3 class="label">Останні оновлення</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок — замінити</h4><p>Опис останньої видачі продуктових наборів або роботи їдальні.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDP -->
+<section class="panel" id="idp">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Напрямок 6</span>
+      <h2>Допомога внутрішньо переміщеним особам</h2>
+      <p>Опишіть тут, яку підтримку отримують ВПО: житло, речі першої необхідності, консультації, інтеграційні програми.</p>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-placeholder">Фото пункту допомоги</div>
+      <div class="photo-placeholder">Фото видачі речей</div>
+      <div class="photo-placeholder">Фото консультації</div>
+    </div>
+    <div class="updates">
+      <h3 class="label">Останні оновлення</h3>
+      <div class="update-item">
+        <div class="update-date">ВЕРЕСЕНЬ 2026</div>
+        <div><h4>Заголовок — замінити</h4><p>Опис останньої допомоги, наданої ВПО.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="panel" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Зв'язатися з нами</span>
+      <h2>Контакти</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Адреса</h3>
+        <p>Вкажіть тут повну адресу організації.</p>
+        <h3>Телефон</h3>
+        <p>+380 XX XXX XX XX</p>
+        <h3>Email</h3>
+        <p>info@example.org</p>
+      </div>
+      <div class="contact-block">
+        <h3>Соціальні мережі</h3>
+        <p>
+          Facebook: example<br>
+          Instagram: example
+        </p>
+        <h3>Графік роботи</h3>
+        <p>Пн–Пт, 09:00–18:00 (вкажіть реальний графік)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 ГО «Моя Незалежна Країна». Усі права захищено.
+  </div>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('nav button');
+  const panels = document.querySelectorAll('section.panel');
+  function showTab(id){
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+    document.getElementById('mainnav').classList.remove('open');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  buttons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+</script>
+
+</body>
+</html>
