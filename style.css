@@ -212,7 +212,7 @@ footer a{color:#fff;}
 .hero-banner{
   position:relative;min-height:78vh;display:flex;align-items:center;justify-content:center;
   text-align:center;color:#fff;padding:80px 24px;
-  background:#14254a url('images/hero.jpg') center/cover no-repeat;
+  background:#14254a url('images/hero.jpeg') center/cover no-repeat;
 }
 .hero-banner::before{
   content:"";position:absolute;inset:0;
