@@ -281,3 +281,10 @@ a.direction:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.
 @media (max-width:860px){.direction-head{grid-template-columns:1fr;gap:20px;}}
 
 .project .project-logo{margin-bottom:8px;}
+
+.cta.centered{flex-direction:column;justify-content:center;text-align:center;}
+.cta.centered h2{font-size:1.4rem;}
+.qr-block .qr{width:280px;max-width:100%;height:auto;margin:8px 0 20px;border-radius:12px;background:#fff;padding:10px;}
+.info-block .note{margin-top:24px;}
+.rehab-stat b{text-align:center;}
+.rehab-stat span{font-size:1.05rem;}
